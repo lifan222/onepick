@@ -4,16 +4,19 @@
   <ion-content class="padding">
 
 
+
     <div class="button-bar">
       <a class="button button-outline button-assertive"
          ng-click="votesShow()"
-         ng-class="{'active': btnActive}">我的投票</a>
+         ng-class="{'active': btnActive}">我的问题</a>
       <a class="button button-outline button-assertive"
-         ng-click="questionShow()" ng-class="{'active': !btnActive}">我的问题</a>
+         ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
     </div>
 
 
-    <div ng-show="myVar">
+
+    <div ng-show="!myVar">
+
       <div class="list card" ng-repeat="vote in votes">
         <div class="item item-text-wrap">
           <h3>{{ vote.content }}</h3>
@@ -22,16 +25,41 @@
       </div>
     </div>
 
-    <div ng-show="!myVar">
-
+    <div ng-show="myVar">
       <div class="list card">
         <div class="item item-divider">
           <h2>正在进行的问题</h2>
         </div>
 
         <div class="item item-body">
-          <h3>{{ actQuestion.content }}</h3>
-          <p>{{ actQuestion.date }}</p>
+          <ion-slide-box active-slide="myActiveSlide">
+            <ion-slide ng-repeat="actQuestion in actQuestions">
+              <div class  ="box blue">
+                <h3>{{ actQuestion.content }}</h3>
+                <p>还有{{ actQuestion.timeLeft }}小时结束
+                  <span>  已有{{ actQuestion.votePeople }}人投票</span>
+                </p>
+                <div class="row">
+                  <div class="col">
+                    <p>A.{{actQuestion.options.A}}</p>
+                    <div class="item item-avatar-left">
+                      <img  ng-src={{actQuestion.imagesUrl.A}}>
+
+                    </div>
+                    <progress max="100" value="{{actQuestion.values.A}}"> </progress>
+                  </div>
+                  <div class="col">
+                    <p>B.{{actQuestion.options.B}}</p>
+                    <div class="item item-avatar-left">
+                      <img  ng-src={{actQuestion.imagesUrl.B}}>
+
+                    </div>
+                    <progress max="100" value="{{actQuestion.values.B}}"> </progress>
+                  </div>
+                </div>
+              </div>
+            </ion-slide>
+          </ion-slide-box>
         </div>
       </div>
 

@@ -4,6 +4,8 @@ var app = angular.module('onepick', ['ionic',
   'onepick.controllers.newvote'
 ]);
 
+
+
 app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('tab', {
