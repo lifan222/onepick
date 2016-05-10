@@ -1,0 +1,15 @@
+.radio-inline .item {
+  font-size: 12px;
+  float: left;
+}
+
+.radio-inline .clearBoth {
+  clear: both;
+}
+
+.slider-slide {
+  padding-bottom: 100px;
+
+}
+
+

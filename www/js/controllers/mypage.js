@@ -1,7 +1,48 @@
-var app = angular.module('onepick.controllers.mypage', ['ionic']);
+var db = null;
+
+var app = angular.module('onepick.controllers.mypage', ['ionic', 'ngCordova']);
+
+app.run(function($ionicPlatform, $cordovaSQLite) {
+  $ionicPlatform.ready(function() {
+
+    db = window.openDatabase("my.db", '1', 'my', 1024 * 1024 * 100);
+    $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS Messages (id INTEGER PRIMARY KEY AUTOINCREMENT, message TEXT)');
+  });
+});
 
 
-app.controller('MypageCtrl', function($scope, $ionicSlideBoxDelegate){
+
+app.controller('MypageCtrl', function($scope, $ionicSlideBoxDelegate, $cordovaSQLite){
+
+  $scope.save = function(newMessage) {
+
+    $cordovaSQLite.execute(db, 'INSERT INTO Messages (message) VALUES (?)', [newMessage])
+        .then(function(result) {
+          $scope.statusMessage = "Message saved successful, cheers!";
+        }, function(error) {
+          $scope.statusMessage = "Error on saving: " + error.message;
+        })
+
+  }
+
+  $scope.load = function() {
+
+    // Execute SELECT statement to load message from database.
+    $cordovaSQLite.execute(db, 'SELECT * FROM Messages ORDER BY id DESC')
+        .then(
+            function(result) {
+
+              if (result.rows.length > 0) {
+
+                $scope.newMessage = result.rows.item(0).message;
+                $scope.statusMessage = "Message loaded successful, cheers!";
+              }
+            },
+            function(error) {
+              $scope.statusMessage = "Error on loading: " + error.message;
+            }
+        );
+  }
 
   $scope.myVar = true;
   $scope.btnActive = true;

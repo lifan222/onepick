@@ -1,0 +1,14 @@
+
+  <ion-view view-title="热门投票">
+
+    <ion-content>
+
+      <div class="card" ng-repeat="vote in votes">
+        <div class="item item-text-wrap">
+          <h3>{{ vote.content }}</h3>
+          <p>{{ vote.date }}</p>
+        </div>
+      </div>
+
+    </ion-content>
+  </ion-view>

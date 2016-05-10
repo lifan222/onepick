@@ -1,0 +1,95 @@
+
+<ion-view view-title="cupsue">
+
+  <ion-content class="padding">
+
+
+
+    <div class="button-bar">
+      <a class="button button-outline button-assertive"
+         ng-click="votesShow()"
+         ng-class="{'active': btnActive}">我的问题</a>
+      <a class="button button-outline button-assertive"
+         ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
+    </div>
+
+
+
+    <div ng-show="!myVar">
+
+      <div class="list card" ng-repeat="vote in votes">
+        <div class="item item-text-wrap">
+          <h3>{{ vote.content }}</h3>
+          <p>{{ vote.date }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="myVar">
+      <div class="list card">
+        <div class="item item-divider">
+          <h2>正在进行的问题</h2>
+        </div>
+
+        <div class="item item-body">
+          <ion-slide-box active-slide="myActiveSlide">
+            <ion-slide ng-repeat="actQuestion in actQuestions">
+              <div class  ="box blue">
+                <h3>{{ actQuestion.content }}</h3>
+                <p>还有{{ actQuestion.timeLeft }}小时结束
+                  <span>  已有{{ actQuestion.votePeople }}人投票</span>
+                </p>
+                <div class="row">
+                  <div class="col">
+                    <p>A.{{actQuestion.options.A}}</p>
+                    <div class="item item-avatar-left">
+                      <img  ng-src={{actQuestion.imagesUrl.A}}>
+
+                    </div>
+                    <progress max="100" value="{{actQuestion.values.A}}"> </progress>
+                  </div>
+                  <div class="col">
+                    <p>B.{{actQuestion.options.B}}</p>
+                    <div class="item item-avatar-left">
+                      <img  ng-src={{actQuestion.imagesUrl.B}}>
+
+                    </div>
+                    <progress max="100" value="{{actQuestion.values.B}}"> </progress>
+                  </div>
+                </div>
+              </div>
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+      </div>
+
+      <div class="list card">
+        <div class="item item-divider">
+          <h2>历史问题</h2>
+        </div>
+
+        <div class="item item-body" ng-repeat="oldQuestion in oldQuestions">
+          <h3>{{ oldQuestion.content }}</h3>
+          <p>{{ oldQuestion.date }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Message: </span>
+        <input type="text" ng-model="newMessage">
+      </label>
+    </div>
+    <div>
+      <button class="button button-block" ng-click="save(newMessage)">
+        Save
+      </button>
+      <button class="button button-block" ng-click="load()">
+        Load
+      </button>
+      <p>{{ statusMessage }}</p>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -6,6 +6,7 @@ var app = angular.module('onepick', ['ionic',
 
 
 
+
 app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
   .state('tab', {
