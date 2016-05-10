@@ -1,6 +1,6 @@
 
 <ion-view view-title="发起问题">
-  <ion-content padding="true">
+  <ion-content padding="true" >
 
     <form name="signupForm"
           novalidate="novalidate"
@@ -24,6 +24,7 @@
                  name="A"
                  ng-model="formData.a"
                  ng-required="true" >
+
         </label >
 
         <label class="item item-input item-floating-label">
@@ -50,15 +51,42 @@
 
       <div>
         <p>截止至</p>
+        <!--
         <div class="radio-inline">
+
           <ion-radio ng-model="choice" ng-value="'A'">一天后</ion-radio>
           <ion-radio ng-model="choice" ng-value="'B'">三天后</ion-radio>
           <ion-radio ng-model="choice" ng-value="'C'">一周后</ion-radio>
           <br class="clearBoth">
         </div>
+         -->
+          <div class="radio-inline">
+        <ul>
+          <li>
+            <input type="radio" id="f-option" name="selector">
+            <label for="f-option">一天后</label>
+
+            <div class="check"></div>
+          </li>
+
+          <li>
+            <input type="radio" id="s-option" name="selector">
+            <label for="s-option">三天后</label>
+
+            <div class="check"><div class="inside"></div></div>
+          </li>
+
+          <li>
+            <input type="radio" id="t-option" name="selector">
+            <label for="t-option">一周后</label>
+
+            <div class="check"><div class="inside"></div></div>
+          </li>
+        </ul>
+              <br class="clearBoth"></br>
       </div>
 
-      </br>
+      </div>
 
       <div>
         <p>分享到</p>
@@ -71,12 +99,18 @@
         </div>
       </div>
 
+      <!--
       <div class="button-bar padding">
         <button class="button button-outline button-assertive"
            >预览</button>
-        <button  type="submit" class="button button-outline button-assertive"
+        <button  type="submit" class="button button-assertive"
            >发布</button>
       </div>
+      -->
+        <div>
+            <button class="button button-submit button-outline button-assertive" id="preview">预览</button>
+            <button class="button button-submit button-assertive" id="submit">发布</button>
+        </div>
 
     </form >
 
