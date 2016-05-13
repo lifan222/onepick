@@ -130,10 +130,16 @@ input[type=radio]:checked {
 }
 
 .button-submit{
-  width:48%;
+  width:45%;
   border-radius: 100px;
-  @include margin-value($top:80px);
+  @include margin-value($top:10px);
+  text-align: center;
+}
+
+#preview{
+  float: left;
 }
 #submit{
-  float: right;
-}
+  float: right;}
+
+/////////////////hotvote///////////////////////

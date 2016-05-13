@@ -8,8 +8,108 @@
 }
 
 .slider-slide {
-  padding-bottom: 100px;
+  padding-bottom: 4%;
+}
 
+/*///////////hot vote//////////////////*/
+.avatar {
+  width: 100px;
+  height:auto;
+  margin:0 auto;
+  text-align: center;
+  padding-top: 3.375em;
+  z-index: 10;
+}
+
+.avatar img{
+  background-color: #d2d2d2;
+  border:3px solid #ffffff;
+  box-shadow: 0px 3px 5px #d2d2d2;
+  height:auto;
+  width: 100px;
+  border-radius: 100px;
+}
+
+.card{
+  max-width: 400px;
+  margin:0 auto;
+  margin-bottom:10px;
+  width: 90%;
+}
+
+#todayVote{
+  margin-top: -90px;
+  z-index: -9;
+  padding:60px 0 0 0;
+  color:#5a5b60;
+}
+.todayQ{
+  font-size: 0.9em;
+  color: #5a5b60;
+  margin:0 auto;
+  width:auto;
+  text-align: ;
+}
+
+.todayQ ul{
+  padding-left: 10px;
+}
+.todayQ ul li {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 25px;/*////////hot vote choices//////////*/
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  float: left;
+}
+.todayQ ul label{
+  margin: 0;
+  float: left;
+  text-align: left;
+}
+
+.item-text-wrap{
+  text-align: left;
+}
+
+.item p{
+  color: ;;
+}
+
+.item h3{
+  margin-top: 10px;
+}
+
+#submit-vote{
+  width:100%;
+  float:clear;
+  margin:5px auto;
+  font-size:1em;
+  max-width:300px;
+}
+/*///////////////////mypage/////////////////*/
+.mypage-head{
+  height:230px;
+  background-image: url("../img/bg.png");
+  background-size:cover;
+  -webkit-filter:saturate(0.8);
+  margin-bottom: 10px;
+}
+#tab-navi{
+  margin-top: 136px;
+  background-color: transparent;
+  background-size: 0px;
+  -webkit-background-size: 0px;
+  -moz-background-size: 0px;
+  -o-background-size: 0px;
+}
+
+.devider{
+  border-left: 2px #e15e5f solid;
+  margin-left: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
 }
 
 

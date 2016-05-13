@@ -1,16 +1,21 @@
-
 <ion-view view-title="cupsue">
 
-  <ion-content class="padding">
 
-
-
-    <div class="button-bar">
-      <a class="button button-outline button-assertive"
+<!----------------head---------------->
+  <ion-content class="card" style="margin-top: 0">
+    <div class="mypage-head">
+      <div class="avatar" >
+        <img src="../../img/logo.jpg">
+        <h6>投稿者ID</h6>
+      </div>
+      <div class="tabs  tabs-striped tabs-top" id="tab-navi"">
+        <a class="tab-item active"
          ng-click="votesShow()"
          ng-class="{'active': btnActive}">我的问题</a>
-      <a class="button button-outline button-assertive"
+      <span style="color: #ffffff;">|</span>
+        <a class="tab-item "
          ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
+      </div>
     </div>
 
 
@@ -26,11 +31,10 @@
     </div>
 
     <div ng-show="myVar">
-      <div class="list card">
-        <div class="item item-divider">
-          <h2>正在进行的问题</h2>
-        </div>
-
+      <div class="devider">
+        <p><strong>正在进行的问题</strong></p>
+      </div>
+      <div class="card">
         <div class="item item-body">
           <ion-slide-box active-slide="myActiveSlide">
             <ion-slide ng-repeat="actQuestion in actQuestions">
@@ -60,19 +64,26 @@
               </div>
             </ion-slide>
           </ion-slide-box>
-        </div>
+        </div
       </div>
 
-      <div class="list card">
-        <div class="item item-divider">
-          <h2>历史问题</h2>
-        </div>
+      <div class="devider">
+        <p><strong>历史问题</strong></p>
+      </div>
 
-        <div class="item item-body" ng-repeat="oldQuestion in oldQuestions">
-          <h3>{{ oldQuestion.content }}</h3>
-          <p>{{ oldQuestion.date }}</p>
+
+        <!--timeline-->
+        <div class="item item-body timeline-content" ng-repeat="oldQuestion in oldQuestions">
+          <div class="containerT">
+            <div class="timeline-block">
+              <div class="markerT"></div>
+              <div class="list card">
+                <span>{{ oldQuestion.date }}</span>
+                <p>{{ oldQuestion.content }}</p>
         </div>
       </div>
+        </div>
+    </div>
     </div>
 
 

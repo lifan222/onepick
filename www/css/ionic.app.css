@@ -9869,12 +9869,16 @@ input[type=radio]:checked ~ label {
   color: #5a5b60; }
 
 .button-submit {
-  width: 48%;
+  width: 45%;
   border-radius: 100px;
   bottom: 0;
   left: 0;
   right: 0;
-  top: 80px; }
+  top: 10px;
+  text-align: center; }
+
+#preview {
+  float: left; }
 
 #submit {
   float: right; }
