@@ -1,14 +1,32 @@
 var app = angular.module('onepick', ['ionic',
   'onepick.controllers.hotvotes',
   'onepick.controllers.mypage',
-  'onepick.controllers.newvote'
+  'onepick.controllers.newvote',
+  'onepick.controllers.intro',
+  'onepick.controllers.oldQueModal',
+  'onepick.controllers.hotVoteModal',
+  'onepick.services',
+  'firebase',
+  'ngCordova'
 ]);
 
 
+app.constant("FIREBASE_URL", 'https://onepick.firebaseio.com');
+app.constant("FACEBOOK_APP_ID", '1594320997546423');
 
+app.config(function ($stateProvider, $urlRouterProvider, FACEBOOK_APP_ID) {
+  openFB.init({appId: FACEBOOK_APP_ID});
+});
 
 app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
+    .state('intro', {
+      url: '/',
+      templateUrl: 'templates/intro.html',
+      controller: 'IntroCtrl'
+    })
+
+
   .state('tab', {
     url: '/tab',
     abstract: true,
@@ -45,6 +63,6 @@ app.config(function($stateProvider, $urlRouterProvider){
     }
   });
 
-  $urlRouterProvider.otherwise('/tab/hotvotes');
+  $urlRouterProvider.otherwise('/');
 
 });

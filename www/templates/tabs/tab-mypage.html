@@ -1,93 +1,109 @@
 
-<ion-view view-title="cupsue">
+<ion-view view-title="{{profile.name}}">
 
-  <ion-content class="padding">
-
-    <div class="button-bar">
-      <a class="button button-outline button-assertive"
-         ng-click="votesShow()"
-         ng-class="{'active': btnActive}">我的问题</a>
-      <a class="button button-outline button-assertive"
-         ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
-    </div>
-
-
-
-    <div ng-show="!myVar">
-
-      <div class="list card" ng-repeat="vote in votes">
-        <div class="item item-text-wrap">
-          <h3>{{ vote.content }}</h3>
-          <p>{{ vote.date }}</p>
+  <ion-content class="mypage-view" style="margin-top: 0">
+      <div class="mypage-head">
+        <div class="avatar" >
+          <img src="../../img/logo.jpg">
+          <h6>投稿者ID</h6>
         </div>
+        <div class="tabs  tabs-striped tabs-top" id="tab-navi"">
+        <a class="tab-item active"
+           ng-click="votesShow()"
+           ng-class="{'active': btnActive}">我的问题</a>
+        <span style="color: #ffffff;">|</span>
+        <a class="tab-item "
+           ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
       </div>
     </div>
 
-    <div ng-show="myVar">
-      <div class="list card">
-        <div class="item item-divider">
+    <div class="mypage-content">
+      <div ng-show="!myVar">
+        <div  class="timeline">
+        <div ng-repeat="vote in votes" >
+          <div class="timeline-thumb bg-color-red timeline-icon"></div>
+          <div class="card">
+
+            <a class="item item-text-wrap" >
+              <div class="timeline-item">
+                <h3>{{ vote.content }}</h3>
+                <p>{{ vote.date }}</p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      </div>
+
+      <div ng-show="myVar">
+        <div class="actQueTitle devider">
           <h2>正在进行的问题</h2>
         </div>
 
-        <div class="item item-body">
-          <ion-slide-box active-slide="myActiveSlide">
-            <ion-slide ng-repeat="actQuestion in actQuestions">
-              <div class  ="box blue">
-                <h3>{{ actQuestion.content }}</h3>
-                <p>还有{{ actQuestion.timeLeft }}小时结束
-                  <span>  已有{{ actQuestion.votePeople }}人投票</span>
-                </p>
-                <div class="row">
-                  <div class="col">
-                    <p>A.{{actQuestion.options.A}}</p>
-                    <div class="item item-avatar-left">
-                      <img  ng-src={{actQuestion.imagesUrl.A}}>
+        <div class="actQ">
 
-                    </div>
-                    <progress max="100" value="{{actQuestion.values.A}}"> </progress>
-                  </div>
-                  <div class="col">
-                    <p>B.{{actQuestion.options.B}}</p>
-                    <div class="item item-avatar-left">
-                      <img  ng-src={{actQuestion.imagesUrl.B}}>
+          <div class="list card">
+            <div class="item item-body">
+              <ion-slide-box active-slide="myActiveSlide" ng-show="true" does-continue="true">
+                <ion-slide ng-repeat="actQuestion in actQuestions" >
+                  <div>
+                    <h3>{{ actQuestion.content }}</h3>
+                    <p>还有{{ actQuestion.timeLeft }}小时结束
+                      <span>  已有{{ actQuestion.votePeople }}人投票</span>
+                    </p>
+                    <div class="row">
+                      <div class="col">
+                        <p>A.{{actQuestion.options.A}}</p>
+                        <div class="item item-avatar-left">
+                          <img  ng-src={{actQuestion.imagesUrl.A}}>
 
+                        </div>
+                        <progress max="100" value="{{actQuestion.values.A}}"> </progress>
+                      </div>
+                      <div class="col">
+                        <p>B.{{actQuestion.options.B}}</p>
+                        <div class="item item-avatar-left">
+                          <img  ng-src={{actQuestion.imagesUrl.B}}>
+
+                        </div>
+                        <progress max="100" value="{{actQuestion.values.B}}"> </progress>
+                      </div>
                     </div>
-                    <progress max="100" value="{{actQuestion.values.B}}"> </progress>
                   </div>
-                </div>
-              </div>
-            </ion-slide>
-          </ion-slide-box>
+                </ion-slide>
+              </ion-slide-box>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="list card">
-        <div class="item item-divider">
+        <div class="oldQueTitle devider">
           <h2>历史问题</h2>
         </div>
+        <div  class="timeline">
+          <div ng-repeat="oldQuestion in oldQuestions" ng-click="modal.show(); idPass(oldQuestion.$id)">
+            <div class="timeline-thumb bg-color-red timeline-icon"></div>
+            <div class="card">
 
-        <div class="item item-body" ng-repeat="oldQuestion in oldQuestions">
-          <h3>{{ oldQuestion.content }}</h3>
-          <p>{{ oldQuestion.date }}</p>
+              <a class="item item-text-wrap" >
+
+                <div class="timeline-item">
+                  <h3>{{ oldQuestion.content }}</h3>
+                  <p>{{ oldQuestion.date }}</p>
+                </div>
+              </a>
+            </div>
+
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="list">
-      <label class="item item-input">
-        <span class="input-label">Message: </span>
-        <input type="text" ng-model="newMessage">
-      </label>
-    </div>
-    <div>
-      <button class="button button-block" ng-click="save(newMessage)">
-        Save
-      </button>
-      <button class="button button-block" ng-click="load()">
-        Load
-      </button>
-      <p>{{ statusMessage }}</p>
-    </div>
+      </div>
+
+
+
+
+
+
 
   </ion-content>
 </ion-view>

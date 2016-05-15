@@ -22,8 +22,8 @@ $assertive: #e15e5f;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
-@import "www/scss/style.scss";
+@import "/www/lib/ionic/scss/ionic";
+@import "/www/scss/style.scss";
 
 
 ////////////////newvote///////////////////////////////
@@ -130,10 +130,11 @@ input[type=radio]:checked {
 }
 
 .button-submit{
-  width:48%;
+  width:45%;
   border-radius: 100px;
-  @include margin-value($top:80px);
+  text-align: center;
 }
 #submit{
   float: right;
 }
+

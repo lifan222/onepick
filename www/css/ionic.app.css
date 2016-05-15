@@ -9870,11 +9870,7 @@ input[type=radio]:checked ~ label {
 
 .button-submit {
   width: 48%;
-  border-radius: 100px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 80px; }
+  border-radius: 100px; }
 
 #submit {
   float: right; }
