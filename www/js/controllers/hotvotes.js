@@ -5,6 +5,8 @@ app.controller('HotvotesCtrl', function($scope,
                                         $ionicModal,
                                         $rootScope){
 
+  $scope.btnClicked = false;
+  
   var hotVotesRef = new Firebase("https://onepick.firebaseio.com/hotvotes");
   var todayVotesRef = new Firebase("https://onepick.firebaseio.com/todayvotes");
 

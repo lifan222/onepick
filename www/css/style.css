@@ -1,3 +1,8 @@
+/*index*/
+ion-content {
+  background-color: #F3F4F8;
+}
+
 
 .radio-inline .item {
   font-size: 12px;
@@ -15,6 +20,10 @@
 
 
 /*///////////hot vote//////////////////*/
+#hot-content {
+  padding: 0 10px 0 10px;
+}
+
 .avatar {
   width: 100px;
   height:auto;
@@ -42,7 +51,6 @@
 
 .mypage-content {
   padding: 0 10px 0 10px;
-  background-color: #F3F4F8;
 }
 
 #todayVote{
@@ -104,8 +112,9 @@
 
 #submit-vote{
   width:100%;
-  margin:5px auto;
+  margin: 30px auto 0 auto;
   font-size:1em;
+  text-align: center;
   max-width:300px;
 }
 
@@ -115,8 +124,9 @@
   height:230px;
   background-image: url("../img/bg.png");
   background-size:cover;
-  -webkit-filter:saturate(0.8);
+  -webkit-filter:saturate(1);
 }
+
 #tab-navi{
   margin-top: 136px;
   background-color: transparent;
@@ -134,6 +144,23 @@
   height: 25px;
 }
 
+
+/*mypage-avatar*/
+.circle-square{
+  position:relative;
+  width:120px;
+  height:120px;
+  overflow:hidden;
+  border-radius:50%;
+
+}
+
+.circle-square img{
+  width:150%;
+  height:auto;
+  -webkit-filter:brightness(.8);
+  margin:-20px 0 0 -25px;
+}
 
 /*Timeline*/
 
@@ -154,7 +181,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 3px;
+  width: 2px;
   height: 100%;
   background: #e15e5f;
   left: 0;
@@ -164,17 +191,17 @@
 
 .timeline .timeline-thumb {
   border-radius: 50px;
-  width: 13px;
+  width: 11px;
   z-index: 10;
   position: fixed;
   left: 5px;
 }
 
 .timeline .timeline-thumb.timeline-icon {
-  height: 13px;
+  height: 11px;
   text-align: center;
   color: white;
-  border: 2px solid #F3F4F8;
+  border: 2px solid #e15e5f;
 }
 
 .timeline .timeline-thumb.timeline-icon i {
@@ -209,8 +236,9 @@
 
 /* === Color Themes === */
 .bg-color-red {
-  background-color: #e15e5f !important;
+  background-color: #F3F4F8 !important;
 }
+
 
 
 

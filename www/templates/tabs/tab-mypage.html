@@ -1,20 +1,21 @@
 
-<ion-view view-title="{{profile.name}}">
+<ion-view hide-nav-bar="true">
 
   <ion-content class="mypage-view" style="margin-top: 0">
       <div class="mypage-head">
         <div class="avatar" >
           <img src="../../img/logo.jpg">
-          <h6>投稿者ID</h6>
+          <h4>{{ profile.name }}</h4>
         </div>
-        <div class="tabs  tabs-striped tabs-top" id="tab-navi"">
-        <a class="tab-item active"
-           ng-click="votesShow()"
-           ng-class="{'active': btnActive}">我的问题</a>
-        <span style="color: #ffffff;">|</span>
-        <a class="tab-item "
-           ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
+
+        <div class="tabs  tabs-striped tabs-top" id="tab-navi">
+          <a class="tab-item active"
+            ng-click="votesShow()"
+            ng-class="{'active': btnActive}">我的问题</a>
+            <span style="color: #ffffff;">|</span>
+          <a class="tab-item " ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
       </div>
+
     </div>
 
     <div class="mypage-content">
@@ -55,7 +56,7 @@
                     <div class="row">
                       <div class="col">
                         <p>A.{{actQuestion.options.A}}</p>
-                        <div class="item item-avatar-left">
+                        <div class="item circle-square">
                           <img  ng-src={{actQuestion.imagesUrl.A}}>
 
                         </div>
@@ -63,7 +64,7 @@
                       </div>
                       <div class="col">
                         <p>B.{{actQuestion.options.B}}</p>
-                        <div class="item item-avatar-left">
+                        <div class="item circle-square">
                           <img  ng-src={{actQuestion.imagesUrl.B}}>
 
                         </div>
