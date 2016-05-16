@@ -14,7 +14,7 @@
   right: 5%;
   bottom: 5%;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 0;
   -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); }
 
@@ -27,9 +27,10 @@
 /* Fix modal backdrop for smaller devices */
 @media (max-width: 679px) {
   .active .modal-backdrop-bg {
-    opacity: .5; }
+    opacity: .3; }
   .modal-backdrop-bg {
     -webkit-transition: opacity 300ms ease-in-out;
+    -webkit-filter: blur(15px);
     transition: opacity 300ms ease-in-out;
     background-color: #000;
     opacity: 0; } }

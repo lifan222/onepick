@@ -1,39 +1,40 @@
 
+
 <ion-view hide-nav-bar="true">
   <ion-content class="mypage-view" style="margin-top: 0">
 
     <div class="mypage-head">
-        <div class="avatar" >
-          <img src="../../img/logo.jpg">
-          <h4>{{auth.profile.username}}</h4>
-        </div>
+      <div class="avatar" >
+        <img src="../../img/logo.jpg">
+        <h4>{{auth.profile.username}}</h4>
+      </div>
 
-        <div class="tabs  tabs-striped tabs-top" id="tab-navi">
-          <a class="tab-item active"
-            ng-click="votesShow()"
-            ng-class="{'active': btnActive}">我的问题</a>
-            <span style="color: #ffffff;">|</span>
-          <a class="tab-item " ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
-        </div>
+      <div class="tabs  tabs-striped tabs-top" id="tab-navi">
+        <a class="tab-item active"
+           ng-click="votesShow()"
+           ng-class="{'active': btnActive}">我的问题</a>
+        <span style="color: #ffffff;">|</span>
+        <a class="tab-item " ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
+      </div>
     </div>
 
     <div class="mypage-content">
       <div ng-show="!myVar">
         <div  class="timeline">
-        <div ng-repeat="vote in votes" >
-          <div class="timeline-thumb bg-color-red timeline-icon"></div>
-          <div class="card">
+          <div ng-repeat="vote in votes" >
+            <div class="timeline-thumb bg-color-red timeline-icon"></div>
+            <div class="card">
 
-            <a class="item item-text-wrap" >
-              <div class="timeline-item">
-                <h3>{{ vote.content }}</h3>
-                <p>{{ vote.date }}</p>
-              </div>
-            </a>
+              <a class="item item-text-wrap" >
+                <div class="timeline-item">
+                  <h3>{{ vote.content }}</h3>
+                  <p>{{ vote.date }}</p>
+                </div>
+              </a>
+            </div>
+
           </div>
-
         </div>
-      </div>
       </div>
 
       <div ng-show="myVar">
@@ -47,6 +48,7 @@
             <div class="item item-body">
               <ion-slide-box active-slide="myActiveSlide" ng-show="true" does-continue="true">
                 <ion-slide ng-repeat="actQuestion in actQuestions" >
+
                   <div>
                     <h3>{{ actQuestion.content }}</h3>
                     <p>还有{{ actQuestion.timeLeft }}小时结束
@@ -55,17 +57,49 @@
                     <div class="row">
                       <div class="col">
                         <p>A.{{actQuestion.options.A}}</p>
-                        <div class="item circle-square">
+                        <div round-progress
+                             max="100"
+                             current="75"
+                             color="#e15e5f"
+                             bgcolor="#eaeaea"
+                             radius="60"
+                             stroke="5"
+                             semi="false"
+                             rounded="true"
+                             clockwise="true"
+                             responsive="false"
+                             duration="300"
+                             animation="easeOutCubic"
+                             animation-delay="0">
+                        </div>
+                        <div class="item circle-square" style="margin:-121px 0 0 3px;">
                           <img  ng-src={{actQuestion.imagesUrl.A}}>
                         </div>
-                        <progress max="100" value="{{actQuestion.values.A}}"> </progress>
+                        <div>
+                        </div>
                       </div>
                       <div class="col">
                         <p>B.{{actQuestion.options.B}}</p>
-                        <div class="item circle-square">
+                        <div round-progress
+                             max="100"
+                             current="25"
+                             color="#e15e5f"
+                             bgcolor="#eaeaea"
+                             radius="60"
+                             stroke="5"
+                             semi="false"
+                             rounded="true"
+                             clockwise="true"
+                             responsive="false"
+                             duration="300"
+                             animation="easeOutCubic"
+                             animation-delay="0">
+                        </div>
+                        <div class="item circle-square" style="margin:-121px 0 0 3px;">
                           <img  ng-src={{actQuestion.imagesUrl.B}}>
                         </div>
-                        <progress max="100" value="{{actQuestion.values.B}}"> </progress>
+                        <div>
+                        </div>
                       </div>
                     </div>
                   </div>

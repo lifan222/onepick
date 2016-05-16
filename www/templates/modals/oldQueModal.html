@@ -1,30 +1,57 @@
 <ion-modal-view class="ion-nifty-modal" ng-controller="OldQueModalCtrl">
     <ion-header-bar class="bar bar-header bar-light">
-        <p class="title" style="color: #e15e5f;">历史问题</p>
-        <a class="button button-icon ion-ios-close-outline" style="color: #e15e5f;" ng-click="modal.hide()"></a>
+        <p class="title" style="color: #e15e5f;"></p>
+        <a class="button button-icon ion-ios-close-empty" style="color: #C86464;" ng-click="modal.hide()"></a>
     </ion-header-bar>
-    <ion-content class="padding">
+    <ion-content id="oldModal">
+
         <div>
-            <p>{{ oldQuestion.content }}</p>
-            <p>{{ oldQuestion.date }}
-                <span>  已有{{ oldQuestion.votePeople }}人投票</span>
-            </p>
             <div class="row">
                 <div class="col">
                     <p>A.{{oldQuestion.options.A}}</p>
-                    <div class="item item-avatar-left">
-                        <img  ng-src={{oldQuestion.imagesUrl.A}}>
-
+                    <div round-progress
+                         max="100"
+                         current="75"
+                         color="#e15e5f"
+                         bgcolor="#eaeaea"
+                         radius="60"
+                         stroke="5"
+                         semi="false"
+                         rounded="true"
+                         clockwise="true"
+                         responsive="false"
+                         duration="300"
+                         animation="easeOutCubic"
+                         animation-delay="0">
                     </div>
-                    <progress max="100" value="{{oldQuestion.values.A}}"> </progress>
+                    <div class="item circle-square" style="margin:-121px 0 0 3px;">
+                        <img  ng-src={{oldQuestion.imagesUrl.A}}>
+                    </div>
+                    <div>
+                    </div>
                 </div>
                 <div class="col">
                     <p>B.{{oldQuestion.options.B}}</p>
-                    <div class="item item-avatar-left">
-                        <img  ng-src={{oldQuestion.imagesUrl.B}}>
-
+                    <div round-progress
+                         max="100"
+                         current="25"
+                         color="#e15e5f"
+                         bgcolor="#eaeaea"
+                         radius="60"
+                         stroke="5"
+                         semi="false"
+                         rounded="true"
+                         clockwise="true"
+                         responsive="false"
+                         duration="300"
+                         animation="easeOutCubic"
+                         animation-delay="0">
                     </div>
-                    <progress max="100" value="{{oldQuestion.values.B}}"> </progress>
+                    <div class="item circle-square" style="margin:-121px 0 0 3px;">
+                        <img  ng-src={{oldQuestion.imagesUrl.B}}>
+                    </div>
+                    <div>
+                    </div>
                 </div>
             </div>
         </div>
