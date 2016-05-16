@@ -3,7 +3,9 @@ var app = angular.module('onepick.controllers.hotvotes', ['ionic', "firebase"]);
 app.controller('HotvotesCtrl', function($scope,
                                         $firebaseArray,
                                         $ionicModal,
-                                        $rootScope){
+                                        $rootScope,
+                                        auth){
+  $rootScope.auth = auth;
 
   $scope.btnClicked = false;
   
@@ -19,10 +21,10 @@ app.controller('HotvotesCtrl', function($scope,
     $scope.modal = modal;
   });
 
-  // $scope.hotvotes.$loaded()
-  //     .then(function(){
-  //       console.log($scope.todayvotes);
-  //     });
+  $scope.hotvotes.$loaded()
+      .then(function(){
+        console.log($scope.auth.profile);
+      });
 
   $scope.idPass = function (id) {
     $rootScope.hotVote = {};

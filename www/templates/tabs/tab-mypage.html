@@ -1,11 +1,11 @@
 
 <ion-view hide-nav-bar="true">
-
   <ion-content class="mypage-view" style="margin-top: 0">
-      <div class="mypage-head">
+
+    <div class="mypage-head">
         <div class="avatar" >
           <img src="../../img/logo.jpg">
-          <h4>{{ profile.name }}</h4>
+          <h4>{{auth.profile.username}}</h4>
         </div>
 
         <div class="tabs  tabs-striped tabs-top" id="tab-navi">
@@ -14,8 +14,7 @@
             ng-class="{'active': btnActive}">我的问题</a>
             <span style="color: #ffffff;">|</span>
           <a class="tab-item " ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
-      </div>
-
+        </div>
     </div>
 
     <div class="mypage-content">
@@ -58,7 +57,6 @@
                         <p>A.{{actQuestion.options.A}}</p>
                         <div class="item circle-square">
                           <img  ng-src={{actQuestion.imagesUrl.A}}>
-
                         </div>
                         <progress max="100" value="{{actQuestion.values.A}}"> </progress>
                       </div>
@@ -66,7 +64,6 @@
                         <p>B.{{actQuestion.options.B}}</p>
                         <div class="item circle-square">
                           <img  ng-src={{actQuestion.imagesUrl.B}}>
-
                         </div>
                         <progress max="100" value="{{actQuestion.values.B}}"> </progress>
                       </div>
@@ -91,6 +88,7 @@
                 <div class="timeline-item">
                   <h3>{{ oldQuestion.content }}</h3>
                   <p>{{ oldQuestion.date }}</p>
+                  <div class="circle"></div>
                 </div>
               </a>
             </div>
@@ -99,12 +97,7 @@
         </div>
 
       </div>
-
-
-
-
-
-
+    </div>
 
   </ion-content>
 </ion-view>

@@ -1,0 +1,32 @@
+<ion-modal-view class="ion-nifty-modal" ng-controller="OldQueModalCtrl">
+    <ion-header-bar class="bar bar-header bar-light">
+        <p class="title" style="color: #e15e5f;">历史问题</p>
+        <a class="button button-icon ion-ios-close-outline" style="color: #e15e5f;" ng-click="modal.hide()"></a>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div>
+            <p>{{ oldQuestion.content }}</p>
+            <p>{{ oldQuestion.date }}
+                <span>  已有{{ oldQuestion.votePeople }}人投票</span>
+            </p>
+            <div class="row">
+                <div class="col">
+                    <p>A.{{oldQuestion.options.A}}</p>
+                    <div class="item item-avatar-left">
+                        <img  ng-src={{oldQuestion.imagesUrl.A}}>
+
+                    </div>
+                    <progress max="100" value="{{oldQuestion.values.A}}"> </progress>
+                </div>
+                <div class="col">
+                    <p>B.{{oldQuestion.options.B}}</p>
+                    <div class="item item-avatar-left">
+                        <img  ng-src={{oldQuestion.imagesUrl.B}}>
+
+                    </div>
+                    <progress max="100" value="{{oldQuestion.values.B}}"> </progress>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

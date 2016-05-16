@@ -10,7 +10,7 @@ app.controller('MypageCtrl', function($scope,
                                       $ionicModal, 
                                       $rootScope){
 
-  var userRef = new Firebase("https://onepick.firebaseio.com/users/lifan");
+  var userRef = new Firebase("https://onepick.firebaseio.com/users/"+$rootScope.auth.profile.username);
   $scope.user = $firebaseArray(userRef);
   $scope.profile = $firebaseObject(userRef.child("profile"));
   $scope.votes = $firebaseObject(userRef.child("votes"));
