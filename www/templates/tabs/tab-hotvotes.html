@@ -2,13 +2,14 @@
   <ion-view hide-nav-bar="true">
 
     <ion-content id="hot-content">
-            <div class="avatar">
+
+<!------------------------------------------今日投票------------------------------------------------>
+    <div class="avatar">
                 <img src="../../img/logo.jpg">
                 <h6>投稿者ID</h6>
             </div>
 
-
-            <div class="list card" id="todayVote">
+    <div class="list card" id="todayVote">
 
                 <div class="item item-body ">
                     <div class="todayQ" ng-repeat="todayvote in todayvotes">
@@ -35,17 +36,20 @@
                     </div>
                 </div>
             </div>
+<!-------------------------------------------------------------------------------------------------->
 
-            <div class="actQueTitle devider">
-                <h2>热门投票</h2>
-            </div>
+<!------------------------------------------热门投票------------------------------------------------->
+    <div class="actQueTitle devider">
+            <h2>热门投票</h2>
+    </div>
 
-            <div class="card" ng-repeat="hotvote in hotvotes">
-                <a class="item item-text-wrap" ng-click="modal.show(); idPass(hotvote.$id)">
-                    <h3>{{ hotvote.content }}</h3>
-                    <p>{{ hotvote.date }}</p>
-                </a>
-            </div>
+    <div class="card" ng-repeat="hotvote in hotvotes">
+        <a class="item item-text-wrap" ng-click="modal.show(); idPass(hotvote.$id)">
+            <h3>{{ hotvote.content }}</h3>
+            <p>{{ hotvote.date }}</p>
+        </a>
+    </div>
+<!-------------------------------------------------------------------------------------------------->
 
     </ion-content>
   </ion-view>

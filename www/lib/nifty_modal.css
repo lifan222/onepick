@@ -14,7 +14,7 @@
   right: 5%;
   bottom: 5%;
   background-color: white;
-  border-radius: 0;
+  border-radius: 3px;
   -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); }
 

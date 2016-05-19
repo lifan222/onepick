@@ -1,14 +1,11 @@
-
-
 <ion-view hide-nav-bar="true">
   <ion-content class="mypage-view" style="margin-top: 0">
-
+<!--menu-->
     <div class="mypage-head">
       <div class="avatar" >
         <img src="../../img/logo.jpg">
-        <h4>{{auth.profile.username}}</h4>
+        <h4>{{ username }}</h4>
       </div>
-
       <div class="tabs  tabs-striped tabs-top" id="tab-navi">
         <a class="tab-item active"
            ng-click="votesShow()"
@@ -17,43 +14,42 @@
         <a class="tab-item " ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
       </div>
     </div>
-
+<!--我的投票-->
     <div class="mypage-content">
       <div ng-show="!myVar">
         <div  class="timeline">
           <div ng-repeat="vote in votes" >
             <div class="timeline-thumb bg-color-red timeline-icon"></div>
-            <div class="card">
-
-              <a class="item item-text-wrap" >
-                <div class="timeline-item">
-                  <h3>{{ vote.content }}</h3>
-                  <p>{{ vote.date }}</p>
-                </div>
-              </a>
-            </div>
-
+              <div class="card">
+                <a class="item item-text-wrap" >
+                  <div class="timeline-item">
+                    <h3>{{ vote.content }}</h3>
+                    <p>{{ vote.date }}</p>
+                  </div>
+                </a>
+              </div>
           </div>
         </div>
       </div>
-
+<!--我的问题-->
       <div ng-show="myVar">
+
         <div class="actQueTitle devider">
           <h2>正在进行的问题</h2>
         </div>
-
         <div class="actQ">
-
           <div class="list card">
             <div class="item item-body">
               <ion-slide-box active-slide="myActiveSlide" ng-show="true" does-continue="true">
-                <ion-slide ng-repeat="actQuestion in actQuestions" >
+                <ion-slide ng-repeat="actQuestion in actQuestions | orderBy:'-fullDate'">
+                <!--<ion-slide ng-repeat="actQuestion in actQuestions" >-->
 
                   <div>
                     <h3>{{ actQuestion.content }}</h3>
-                    <p>还有{{ actQuestion.timeLeft }}小时结束
+                    <p>还有{{ actQuestion.timeLeft }}天结束
                       <span>  已有{{ actQuestion.votePeople }}人投票</span>
                     </p>
+                    <p>{{ actQuestion.fullDate }}</p>
                     <div class="row">
                       <div class="col">
                         <p>A.{{actQuestion.options.A}}</p>
@@ -73,7 +69,8 @@
                              animation-delay="0">
                         </div>
                         <div class="item circle-square" style="margin:-121px 0 0 3px;">
-                          <img  ng-src={{actQuestion.imagesUrl.A}}>
+                          <!--<img  ng-src={{actQuestion.imagesUrl.A}}>-->
+                          <img  ng-src="{{'data:image/png;base64,'+ actQuestion.imagesUrl.A.base64}}">
                         </div>
                         <div>
                         </div>
@@ -96,7 +93,8 @@
                              animation-delay="0">
                         </div>
                         <div class="item circle-square" style="margin:-121px 0 0 3px;">
-                          <img  ng-src={{actQuestion.imagesUrl.B}}>
+                          <!--<img  ng-src={{actQuestion.imagesUrl.B}}>-->
+                          <img  ng-src="{{'data:image/png;base64,'+ actQuestion.imagesUrl.B.base64}}">
                         </div>
                         <div>
                         </div>
@@ -116,20 +114,15 @@
           <div ng-repeat="oldQuestion in oldQuestions" ng-click="modal.show(); idPass(oldQuestion.$id)">
             <div class="timeline-thumb bg-color-red timeline-icon"></div>
             <div class="card">
-
-              <a class="item item-text-wrap" >
-
                 <div class="timeline-item">
-                  <h3>{{ oldQuestion.content }}</h3>
-                  <p>{{ oldQuestion.date }}</p>
-                  <div class="circle"></div>
+                  <a class="item item-text-wrap" >
+                    <h3>{{ oldQuestion.content }}</h3>
+                    <p>{{ oldQuestion.date }}</p>
+                  </a>
                 </div>
-              </a>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
 

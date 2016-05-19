@@ -23,8 +23,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 //@import "/www/lib/ionic/scss/ionic.scss";
-@import "www/lib/ionic/scss/ionic";
-@import "www/scss/style.scss";
+@import "/www/lib/ionic/scss/ionic";
+@import "/www/scss/style.scss";
 
 ////////////////newvote///////////////////////////////
 @import url('http://fonts.googleapis.com/css?family=Lato');

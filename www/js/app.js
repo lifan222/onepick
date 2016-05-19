@@ -3,15 +3,13 @@ var app = angular.module('onepick', ['ionic',
   'onepick.controllers.mypage',
   'onepick.controllers.newvote',
   'onepick.controllers.intro',
-  'onepick.controllers.oldQueModal',
-  'onepick.controllers.hotVoteModal',
   'onepick.services',
   'firebase',
-  'ngCordova',
   'angular-svg-round-progressbar',
   'auth0',
   'angular-storage',
-  'angular-jwt'
+  'angular-jwt',
+  'ion-datetime-picker'
 ]);
 
 
@@ -45,6 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvi
   })
 
   .state('tab.mypage', {
+    cache: false,
     url: '/mypage',
     views: {
       'tab-mypage': {
@@ -55,6 +54,7 @@ app.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvi
   })
 
   .state('tab.newvote', {
+    cache: true,
     url: '/newvote',
     views: {
       'tab-newvote': {
@@ -71,7 +71,7 @@ app.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvi
     clientID: 'rOCqM1mblIK60vJtqwhOQa7J3Bl5Dj3o',
     loginState: 'login' // This is the name of the state where you'll show the login, which is defined above...
   });
-  
+
   jwtInterceptorProvider.tokenGetter = function(store, jwtHelper, auth) {
     var idToken = store.get('token');
     var refreshToken = store.get('refreshToken');
@@ -88,13 +88,15 @@ app.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvi
     } else {
       return idToken;
     }
-  }
+  };
 
   $httpProvider.interceptors.push('jwtInterceptor');
 
 });
 
+
 app.run(function(auth) {
   // This hooks all auth events to check everything as soon as the app starts
   auth.hookEvents();
 });
+

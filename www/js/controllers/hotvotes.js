@@ -5,26 +5,27 @@ app.controller('HotvotesCtrl', function($scope,
                                         $ionicModal,
                                         $rootScope,
                                         auth){
-  $rootScope.auth = auth;
 
+  $rootScope.auth = auth;
   $scope.btnClicked = false;
   
   var hotVotesRef = new Firebase("https://onepick.firebaseio.com/hotvotes");
   var todayVotesRef = new Firebase("https://onepick.firebaseio.com/todayvotes");
-
   $scope.hotvotes = $firebaseArray(hotVotesRef);
   $scope.todayvotes = $firebaseArray(todayVotesRef);
+  
 
+  /---------------------------------------热门投票-----------------------------------------/
   $ionicModal.fromTemplateUrl('templates/modals/hotVoteModal.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
-  $scope.hotvotes.$loaded()
-      .then(function(){
-        console.log($scope.auth.profile);
-      });
+  // $scope.hotvotes.$loaded()
+  //     .then(function(){
+  //       console.log($scope.auth.profile);
+  //     });
 
   $scope.idPass = function (id) {
     $rootScope.hotVote = {};
@@ -36,6 +37,7 @@ app.controller('HotvotesCtrl', function($scope,
       };
     });
   };
+  /----------------------------------------------------------------------------------------/
 
 
 });

@@ -1,5 +1,5 @@
 
-var app = angular.module('onepick.controllers.mypage', ['ionic', "firebase"]);
+var app = angular.module('onepick.controllers.mypage', ['ionic', "firebase", "ngCookies", "naif.base64"]);
 
 
 
@@ -8,14 +8,16 @@ app.controller('MypageCtrl', function($scope,
                                       $firebaseArray,
                                       $firebaseObject,
                                       $ionicModal, 
-                                      $rootScope){
+                                      $rootScope, 
+                                      $cookies){
 
-  // var userRef = new Firebase("https://onepick.firebaseio.com/users/"+$rootScope.auth.profile.username);
-  var userRef = new Firebase("https://onepick.firebaseio.com/users/lifaninjp");
+  $rootScope.username = $cookies.get("username");
+  var userRef = new Firebase("https://onepick.firebaseio.com/users/"+$rootScope.username);
+  // var userRef = new Firebase("https://onepick.firebaseio.com/users/lifaninjp");
   $scope.user = $firebaseArray(userRef);
   $scope.profile = $firebaseObject(userRef.child("profile"));
   $scope.votes = $firebaseObject(userRef.child("votes"));
-  $scope.actQuestions = $firebaseObject(userRef.child("activeQuestions"));
+  $scope.actQuestions = $firebaseArray(userRef.child("activeQuestions"));
   $scope.actQuestions.$loaded()
       .then(function(){
         $ionicSlideBoxDelegate.update();
@@ -55,6 +57,8 @@ app.controller('MypageCtrl', function($scope,
       };
     });
   };
+
+
 
 });
 

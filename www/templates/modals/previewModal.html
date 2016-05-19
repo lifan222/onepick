@@ -1,0 +1,60 @@
+<ion-modal-view class="ion-modal">
+    <ion-header-bar class="bar bar-header bar-light">
+        <p class="title" style="color: #e15e5f;">预览</p>
+        <a class="button button-icon ion-ios-close-outline" style="color: #e15e5f;" ng-click="modal.hide()"></a>
+    </ion-header-bar>
+    <!------------------------------------------今日投票------------------------------------------------>
+    <ion-content class="padding">
+
+
+        <div class="list card">
+            <div class="item item-body ">
+                <div class="avatar">
+                    <img src="../../img/logo.jpg">
+                    <h6>投稿者ID</h6>
+                </div>
+                <div class="optDiv">
+                    <h2>{{ newVoteContents.content }}</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" id="f-option" disabled>
+                            <label for="f-option">{{ newVoteContents.options.A }}</label>
+                            <div class="check"></div>
+                        </li>
+                        <li>
+                            <input type="radio" id="s-option" disabled>
+                            <label for="s-option">{{ newVoteContents.options.B }}</label>
+                            <div class="check"></div>
+                        </li>
+                    </ul>
+                    <br class="clearBoth" />
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="item circle-square" >
+                            <img  ng-src="{{'data:image/png;base64,'+ newVoteContents.imagesUrl.A.base64}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="item circle-square" >
+                            <img  ng-src="{{'data:image/png;base64,'+ newVoteContents.imagesUrl.B.base64}}">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="submit-vote">
+                    <button class="button button-outline button-submit button-light" disabled>投票</button>
+                </div>
+            </div>
+        </div>
+
+        <!-----------------------------------发布---------------------------------------------->
+        <div>
+            <button class="button button-submit button-assertive" ng-click="myFunc();modal.hide();">发布</button>
+        </div>
+        <!------------------------------------------------------------------------------------>
+    </ion-content>
+    <!-------------------------------------------------------------------------------------------------->
+</ion-modal-view>

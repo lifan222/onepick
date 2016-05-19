@@ -246,3 +246,51 @@ ion-content {
   background-color: white;
 }
 
+
+/*question input*/
+.optionInput {
+  display: inline-block;
+  width: 90%;
+}
+
+.uploads {
+  width: 25px;
+  height: 25px;
+  background-size: 100%;
+  overflow: hidden;
+  float: right;
+  display: inline-block;
+}
+
+.IconUnclicked{
+  background-image: url("../img/imageIcon.png");
+}
+
+.IconClicked{
+  background-image: url("../img/imageClickedIcon.png");
+}
+
+.uploads input{
+  display: block !important;
+  width: 25px !important;
+  height: 25px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+}
+
+.addOption {
+  height: 47px;
+}
+
+/*option inline*/
+.optDiv li {
+  display: inline-block;
+  width: 50%;
+  left: 10px;
+}
+
+.col {
+  display: inline-block;
+  width: 50%;
+}
+
