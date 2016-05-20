@@ -14,7 +14,7 @@ app.controller('NewvoteCtrl', function($scope,
                                        $ionicModal){
     $rootScope.username = $cookies.get("username");
     var userRef = new Firebase("https://onepick.firebaseio.com/users/"+$rootScope.username);
-    var todayVoteRef = new Firebase("https://onepick.firebaseio.com/todayvotes/");
+    var todayVoteRef = new Firebase("https://onepick.firebaseio.com/todayvotes/newvote");
     var questionRef = userRef.child("activeQuestions");
     var newQueRef = questionRef.push();
     var newTodayRef = todayVoteRef.push();
@@ -26,8 +26,7 @@ app.controller('NewvoteCtrl', function($scope,
         "timeLeft": "",
         "votePeople": 15,
         "values": {
-            "A": 30,
-            "B": 70
+            
         },
         "options": {
             "A": "",
@@ -52,7 +51,9 @@ app.controller('NewvoteCtrl', function($scope,
         $scope.votePush = angular.copy($scope.newVoteContents);
         
         if($rootScope.username == "admin"){
+            $rootScope.todayId = newTodayRef.key();
             newTodayRef.set($scope.votePush);
+            console.log(typeof $rootScope.todayId);
         }else {
             newQueRef.set($scope.votePush);
         }
