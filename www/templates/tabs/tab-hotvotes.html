@@ -1,40 +1,55 @@
 
-  <ion-view hide-nav-bar="true">
-
+<ion-view hide-nav-bar="true">
     <ion-content id="hot-content">
-
 <!------------------------------------------今日投票------------------------------------------------>
-    <div class="avatar">
-                <img src="../../img/logo.jpg">
-                <h6>投稿者ID</h6>
+        <div class="avatar">
+            <img src="../../img/logo.jpg">
+            <h6>投稿者ID</h6>
+        </div>
+
+        <div class="list card">
+            <div id="todayContent">
+                <h4>{{ todayNewVote[0].content }}</h4>
             </div>
+            <div class="item" id="todayVote">
+                <ion-list ng-repeat="option in todayNewVote[0].options">
+                    <ion-radio ng-init="alphaNo = getAlpha($index+65)"
+                               ng-model="$parent.choice"
+                               ng-value="option" >
+                        {{alphaNo}}. {{ option }}
+                    </ion-radio>
+                </ion-list>
+            </div>
+            <div id="submit-vote">
+                <button class="button button-outline button-submit button-assertive" ng-click="voteClick(choice)">投票</button>
+            </div>
+        </div>
 
-    <div class="list card" id="todayVote">
-
-                <div class="item item-body ">
-                    <div class="todayQ" ng-repeat="todayvote in todayvotes">
-                        <h2>{{ todayvote.content }}</h2>
-                        <ul>
-                            <!--///选择项///-->
-                            <li>
-                                <input type="radio" id="f-option" name="selector">
-                                <label for="f-option">{{ todayvote.options.A }}</label>
-                                <div class="check"></div>
-                            </li>
-                            <li>
-                                <input type="radio" id="s-option" name="selector">
-                                <label for="s-option">{{ todayvote.options.B }}</label>
-                                <div class="check"></div>
-                            </li>
-                        </ul>
-                        <br class="clearBoth" />
-                    </div>
-                    <div id="submit-vote">
-                        <button class="button button-outline button-submit button-assertive">投票</button>
-                        <!--<button ng-class="{'button button-submit button-assertive':btnClicked,-->
-                        <!--'button button-outline button-submit button-assertive':!btnClicked}">投票</button>-->
-                    </div>
-                </div>
+    <!--<div class="list card" id="todayVote">-->
+                <!--<div class="item item-body ">-->
+                    <!--<div class="todayQ" ng-repeat="todayvote in todayvotes">-->
+                        <!--<h2>{{ todayvote.content }}</h2>-->
+                        <!--<ul>-->
+                            <!--&lt;!&ndash;///选择项///&ndash;&gt;-->
+                            <!--<li>-->
+                                <!--<input type="radio" id="f-option" name="selector">-->
+                                <!--<label for="f-option">{{ todayvote.options.A }}</label>-->
+                                <!--<div class="check"></div>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<input type="radio" id="s-option" name="selector">-->
+                                <!--<label for="s-option">{{ todayvote.options.B }}</label>-->
+                                <!--<div class="check"></div>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                        <!--<br class="clearBoth" />-->
+                    <!--</div>-->
+                    <!--<div id="submit-vote">-->
+                        <!--<button class="button button-outline button-submit button-assertive">投票</button>-->
+                        <!--&lt;!&ndash;<button ng-class="{'button button-submit button-assertive':btnClicked,&ndash;&gt;-->
+                        <!--&lt;!&ndash;'button button-outline button-submit button-assertive':!btnClicked}">投票</button>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
 <!-------------------------------------------------------------------------------------------------->
 
@@ -45,8 +60,8 @@
 
     <div class="card" ng-repeat="hotvote in hotvotes">
         <a class="item item-text-wrap" ng-click="modal.show(); idPass(hotvote.$id)">
-            <h3>{{ hotvote.content }}</h3>
-            <p>{{ hotvote.date }}</p>
+            <p class="dateStart">{{ hotvote.date }}</p>
+            <h2>{{ hotvote.content }}</h2>
         </a>
     </div>
 <!-------------------------------------------------------------------------------------------------->

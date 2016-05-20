@@ -10,12 +10,33 @@ app.controller('HotvotesCtrl', function($scope,
   $scope.btnClicked = false;
   
   var hotVotesRef = new Firebase("https://onepick.firebaseio.com/hotvotes");
-  var todayVotesRef = new Firebase("https://onepick.firebaseio.com/todayvotes");
+  var todayOldVotesRef = new Firebase("https://onepick.firebaseio.com/todayvotes/oldvotes");
+  var todayNewVoteRef = new Firebase("https://onepick.firebaseio.com/todayvotes/newvote");
   $scope.hotvotes = $firebaseArray(hotVotesRef);
-  $scope.todayvotes = $firebaseArray(todayVotesRef);
-  
+  $scope.todayOldVotes = $firebaseArray(todayOldVotesRef);
+  $scope.todayNewVote = $firebaseArray(todayNewVoteRef);
 
-  /---------------------------------------热门投票-----------------------------------------/
+  //---------------------------------------今日投票-----------------------------------------/
+  var todayUniId = $rootScope.todayId;
+  $scope.voteClick = function (opt) {
+    var optKey = todayNewVoteRef.child($rootScope.todayId).child("options").child(opt).key();
+    var foo = {};
+    foo[optKey] ++;
+    todayNewVoteRef.child($rootScope.todayId).child("values").update(foo);
+
+    console.log($rootScope.todayId);
+    console.log(optKey);
+  };
+
+  $scope.getAlpha = function(no){
+    return String.fromCharCode(no);
+  };
+
+  
+  //----------------------------------------------------------------------------------------/
+
+
+  //---------------------------------------热门投票-----------------------------------------/
   $ionicModal.fromTemplateUrl('templates/modals/hotVoteModal.html', {
     scope: $scope
   }).then(function(modal) {
@@ -24,7 +45,7 @@ app.controller('HotvotesCtrl', function($scope,
 
   // $scope.hotvotes.$loaded()
   //     .then(function(){
-  //       console.log($scope.auth.profile);
+  //       console.log(todayNewVoteRef[0]);
   //     });
 
   $scope.idPass = function (id) {
@@ -37,7 +58,7 @@ app.controller('HotvotesCtrl', function($scope,
       };
     });
   };
-  /----------------------------------------------------------------------------------------/
+  //----------------------------------------------------------------------------------------/
 
 
 });
