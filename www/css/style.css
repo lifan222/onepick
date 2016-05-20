@@ -321,3 +321,16 @@ ion-content {
   width: 50%;
 }
 
+.item .percent{
+  position: absolute;
+  color:#FFFFFF;
+  font-size: 48px;
+  height: 90%;
+  width: 90%;
+  top: 25%;
+  bottom: 5%;
+  left: 10%;
+  right: 5%;
+  font-family: 'PT Sans Caption', sans-serif;
+  z-index: 1000;
+}
