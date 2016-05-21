@@ -3,11 +3,12 @@
         <input type="text"
                placeholder="{{name}}"
                name="{{ name }}"
-               ng-model= "newVoteContents.options[name]"
+               ng-model= "optKey[name].name"
+               ng-init="optKey[name].value = 0"
                ng-required="true" >
     </div>
     <div class="uploads IconUnclicked" id="{{name}}">
-        <input type='file' ng-change="imgIconChange('{{name}}')" ng-model="newVoteContents.imagesUrl[name]" maxsize="5000" base-sixty-four-input>
+        <input type='file' ng-change="imgIconChange('{{name}}')" ng-model="optKey[name].imagesUrl" maxsize="5000" base-sixty-four-input>
     </div>
 </div>
 
