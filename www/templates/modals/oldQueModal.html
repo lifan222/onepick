@@ -1,7 +1,7 @@
 <ion-modal-view class="ion-nifty-modal">
     <ion-header-bar class="bar bar-header bar-assertive">
         <p class="title" >历史问题</p>
-        <a class="button button-icon ion-ios-close-empty" ng-click="modal.hide()"></a>
+        <a class="button button-icon ion-ios-close-empty" ng-click="oldModal.hide()"></a>
     </ion-header-bar>
     <ion-content id="oldModal" class="item item-body">
 
@@ -10,102 +10,31 @@
             <span>  共有{{ oldQuestion.votePeople }}人投票</span>
         </p>
 
-        <div style="margin-bottom: 20px">
-            <div class="row">
-                <div class="col">
-                    <p>A.{{oldQuestion.options.A}}</p>
-                    <div round-progress
-                         max="100"
-                         current="75"
-                         color="#e15e5f"
-                         bgcolor="#eaeaea"
-                         radius="60"
-                         stroke="5"
-                         semi="false"
-                         rounded="true"
-                         clockwise="true"
-                         responsive="false"
-                         duration="300"
-                         animation="easeOutCubic"
-                         animation-delay="0">
-                    </div>
-                    <div class="item circle-square" style="margin:-121px 0 0 3px;">
-                        <img  ng-src={{oldQuestion.imagesUrl.A}}>
-                    </div>
-                    <div>
-                    </div>
-                </div>
-                <div class="col">
-                    <p>B.{{oldQuestion.options.B}}</p>
-                    <div round-progress
-                         max="100"
-                         current="25"
-                         color="#e15e5f"
-                         bgcolor="#eaeaea"
-                         radius="60"
-                         stroke="5"
-                         semi="false"
-                         rounded="true"
-                         clockwise="true"
-                         responsive="false"
-                         duration="300"
-                         animation="easeOutCubic"
-                         animation-delay="0">
-                    </div>
-                    <div class="item circle-square" style="margin:-121px 0 0 3px;">
-                        <img  ng-src={{oldQuestion.imagesUrl.B}}>
-                    </div>
-                    <div>
-                    </div>
-                </div>
+        <div class="ImgOptDiv"
+             style="margin-bottom: 20px"
+             ng-repeat="(key, option) in oldQuestion.options">
+            <p>{{key}}.{{option.name}}</p>
+            <div round-progress
+                 max="100"
+                 current="75"
+                 color="#e15e5f"
+                 bgcolor="#eaeaea"
+                 radius="63"
+                 stroke="10"
+                 semi="false"
+                 rounded="true"
+                 clockwise="true"
+                 responsive="false"
+                 duration="300"
+                 animation="easeOutCubic"
+                 animation-delay="0">
             </div>
-            <div class="row">
-                <div class="col">
-                    <p>A.{{oldQuestion.options.A}}</p>
-                    <div round-progress
-                         max="100"
-                         current="75"
-                         color="#e15e5f"
-                         bgcolor="#eaeaea"
-                         radius="60"
-                         stroke="5"
-                         semi="false"
-                         rounded="true"
-                         clockwise="true"
-                         responsive="false"
-                         duration="300"
-                         animation="easeOutCubic"
-                         animation-delay="0">
-                    </div>
-                    <div class="item circle-square" style="margin:-121px 0 0 3px;">
-                        <img  ng-src={{oldQuestion.imagesUrl.A}}>
-                    </div>
-                    <div>
-                    </div>
-                </div>
-                <div class="col">
-                    <p>B.{{oldQuestion.options.B}}</p>
-                    <div round-progress
-                         max="100"
-                         current="25"
-                         color="#e15e5f"
-                         bgcolor="#eaeaea"
-                         radius="60"
-                         stroke="5"
-                         semi="false"
-                         rounded="true"
-                         clockwise="true"
-                         responsive="false"
-                         duration="300"
-                         animation="easeOutCubic"
-                         animation-delay="0">
-                    </div>
-                    <div class="item circle-square" style="margin:-121px 0 0 3px;">
-                        <img  ng-src={{oldQuestion.imagesUrl.B}}>
-                    </div>
-                    <div>
-                    </div>
-                </div>
+            <div  class="item circle-square" style="margin:-124px 0 0 6px;">
+                <p class="percent">{{(option.value / oldQuestion.votePeople) | percentage:0}}</p>
+                <img  ng-if="option.imagesUrl"
+                      ng-src="{{'data:image/png;base64,'+ option.imagesUrl.base64}}">
+            </div>
+            <div>
             </div>
         </div>
     </ion-content>

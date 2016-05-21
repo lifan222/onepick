@@ -33,21 +33,36 @@ app.controller('MypageCtrl', function($scope,
   $scope.votesShow = function () {
     $scope.myVar = true;
     $scope.btnActive = true;
-
-
-  }
+  };
   $scope.questionShow = function () {
     $scope.myVar = false;
     $scope.btnActive = false;
-  }
+  };
 
+  $ionicModal.fromTemplateUrl('templates/modals/myVoteModal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.myVoteModal = modal;
+  });
+  
   $ionicModal.fromTemplateUrl('templates/modals/oldQueModal.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.oldModal = modal;
   });
 
-  $scope.idPass = function (id) {
+  $scope.voteIdPass = function (id) {
+    $rootScope.vote = {};
+    angular.forEach($scope.votes, function(value, key) {
+      if($scope.votes[key]["$id"] ==  id) {
+        angular.forEach($scope.votes[key], function (value2, key2){
+          $rootScope.vote[key2] = value2;
+        });
+      };
+    });
+  };
+  
+  $scope.oldIdPass = function (id) {
     $rootScope.oldQuestion = {};
     angular.forEach($scope.oldQuestions, function(value, key) {
       if($scope.oldQuestions[key]["$id"] ==  id) {
@@ -57,10 +72,15 @@ app.controller('MypageCtrl', function($scope,
       };
     });
   };
-
-
-
+  
 });
+
+app.filter('percentage', ['$filter', function ($filter) {
+  return function (input, decimals) {
+    return $filter('number')(input * 100, decimals) + '%';
+  };
+}]);
+
 
 
 

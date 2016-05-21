@@ -334,3 +334,9 @@ ion-content {
   font-family: 'PT Sans Caption', sans-serif;
   z-index: 1000;
 }
+
+.ImgOptDiv {
+  display: inline-block;
+  width: 40%;
+  margin: 0 4%;
+}

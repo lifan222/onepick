@@ -14,23 +14,25 @@
         <a class="tab-item " ng-click="questionShow()" ng-class="{'active': !btnActive}">我的投票</a>
       </div>
     </div>
+
 <!--我的投票-->
     <div class="mypage-content">
       <div ng-show="!myVar">
         <div  class="timeline">
-          <div ng-repeat="vote in votes" >
+          <div ng-repeat="vote in votes" ng-click="myVoteModal.show(); voteIdPass(vote.$id)">
             <div class="timeline-thumb bg-color-red timeline-icon"></div>
-              <div class="card">
+            <div class="card">
+              <div class="timeline-item">
                 <a class="item item-text-wrap" >
-                  <div class="timeline-item">
-                    <p class="dateStart">{{ vote.date }}</p>
-                    <h3>{{ vote.content }}</h3>
-                  </div>
+                  <p class="dateStart">{{ vote.date }}</p>
+                  <h2>{{ vote.content }}</h2>
                 </a>
               </div>
+            </div>
           </div>
         </div>
       </div>
+
 <!--我的问题-->
       <div ng-show="myVar">
 
@@ -42,16 +44,13 @@
             <div class="item item-body">
               <ion-slide-box active-slide="myActiveSlide" ng-show="true" does-continue="true">
                 <ion-slide ng-repeat="actQuestion in actQuestions | orderBy:'-fullDate'">
-                <!--<ion-slide ng-repeat="actQuestion in actQuestions" >-->
-
                   <div class="actQuestion">
                     <h2>{{ actQuestion.content }}</h2>
                     <p style="color: #88A8C4">还有{{ actQuestion.timeLeft }}天结束
                       <span>  已有{{ actQuestion.votePeople }}人投票</span>
                     </p>
-                    <div class="row">
-                      <div class="col">
-                        <p>A.{{actQuestion.options.A}}</p>
+                    <div class="ImgOptDiv" ng-repeat="(key, option) in actQuestion.options">
+                        <p>{{key}}.{{option.name}}</p>
                         <div round-progress
                              max="100"
                              current="75"
@@ -68,91 +67,12 @@
                              animation-delay="0">
                         </div>
                         <div  class="item circle-square" style="margin:-124px 0 0 6px;">
-                          <p class="percent">75%</p>
-                          <!--<img  ng-src={{actQuestion.imagesUrl.A}}>-->
-                          <img  ng-src="{{'data:image/png;base64,'+ actQuestion.imagesUrl.A.base64}}">
-                        </div>
-                        <!--<div>-->
-                          <!---->
-                        <!--</div>-->
-
-                        <div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <p>B.{{actQuestion.options.B}}</p>
-                        <div round-progress
-                             max="100"
-                             current="25"
-                             color="#e15e5f"
-                             bgcolor="#eaeaea"
-                             radius="63"
-                             stroke="10"
-                             semi="false"
-                             rounded="true"
-                             clockwise="true"
-                             responsive="false"
-                             duration="300"
-                             animation="easeOutCubic"
-                             animation-delay="0">
-                        </div>
-                        <div class="item circle-square" style="margin:-124px 0 0 6px;">
-                          <!--<img  ng-src={{actQuestion.imagesUrl.B}}>-->
-                          <img  ng-src="{{'data:image/png;base64,'+ actQuestion.imagesUrl.B.base64}}">
+                          <p class="percent">{{(option.value / actQuestion.votePeople) | percentage:0}}</p>
+                          <img  ng-if="option.imagesUrl"
+                                ng-src="{{'data:image/png;base64,'+ option.imagesUrl.base64}}">
                         </div>
                         <div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <p>A.{{actQuestion.options.A}}</p>
-                        <div round-progress
-                             max="100"
-                             current="75"
-                             color="#e15e5f"
-                             bgcolor="#eaeaea"
-                             radius="63"
-                             stroke="10"
-                             semi="false"
-                             rounded="true"
-                             clockwise="true"
-                             responsive="false"
-                             duration="300"
-                             animation="easeOutCubic"
-                             animation-delay="0">
-                        </div>
-                        <div  class="item circle-square" style="margin:-124px 0 0 6px;">
-                          <!--<img  ng-src={{actQuestion.imagesUrl.A}}>-->
-                          <img  ng-src="{{'data:image/png;base64,'+ actQuestion.imagesUrl.A.base64}}">
-                        </div>
-                        <div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <p>B.{{actQuestion.options.B}}</p>
-                        <div round-progress
-                             max="100"
-                             current="25"
-                             color="#e15e5f"
-                             bgcolor="#eaeaea"
-                             radius="63"
-                             stroke="10"
-                             semi="false"
-                             rounded="true"
-                             clockwise="true"
-                             responsive="false"
-                             duration="300"
-                             animation="easeOutCubic"
-                             animation-delay="0">
-                        </div>
-                        <div class="item circle-square" style="margin:-124px 0 0 6px;">
-                          <!--<img  ng-src={{actQuestion.imagesUrl.B}}>-->
-                          <img  ng-src="{{'data:image/png;base64,'+ actQuestion.imagesUrl.B.base64}}">
-                        </div>
-                        <div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </ion-slide>
@@ -165,7 +85,7 @@
           <h2>历史问题</h2>
         </div>
         <div  class="timeline">
-          <div ng-repeat="oldQuestion in oldQuestions" ng-click="modal.show(); idPass(oldQuestion.$id)">
+          <div ng-repeat="oldQuestion in oldQuestions" ng-click="oldModal.show(); oldIdPass(oldQuestion.$id)">
             <div class="timeline-thumb bg-color-red timeline-icon"></div>
             <div class="card">
                 <div class="timeline-item">
@@ -177,6 +97,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
 

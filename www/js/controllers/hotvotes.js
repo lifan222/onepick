@@ -23,9 +23,6 @@ app.controller('HotvotesCtrl', function($scope,
     var foo = {};
     foo[optKey] ++;
     todayNewVoteRef.child($rootScope.todayId).child("values").update(foo);
-
-    console.log($rootScope.todayId);
-    console.log(optKey);
   };
 
   $scope.getAlpha = function(no){
@@ -40,15 +37,10 @@ app.controller('HotvotesCtrl', function($scope,
   $ionicModal.fromTemplateUrl('templates/modals/hotVoteModal.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.hotVoteModal = modal;
   });
 
-  // $scope.hotvotes.$loaded()
-  //     .then(function(){
-  //       console.log(todayNewVoteRef[0]);
-  //     });
-
-  $scope.idPass = function (id) {
+  $scope.hotVoteIdPass = function (id) {
     $rootScope.hotVote = {};
     angular.forEach($scope.hotvotes, function(value, key) {
       if($scope.hotvotes[key]["$id"] ==  id) {

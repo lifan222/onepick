@@ -59,7 +59,7 @@
     </div>
 
     <div class="card" ng-repeat="hotvote in hotvotes">
-        <a class="item item-text-wrap" ng-click="modal.show(); idPass(hotvote.$id)">
+        <a class="item item-text-wrap" ng-click="hotVoteModal.show(); hotVoteIdPass(hotvote.$id)">
             <p class="dateStart">{{ hotvote.date }}</p>
             <h2>{{ hotvote.content }}</h2>
         </a>

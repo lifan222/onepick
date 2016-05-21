@@ -54,7 +54,7 @@ app.config(function($stateProvider, $urlRouterProvider, authProvider, $httpProvi
   })
 
   .state('tab.newvote', {
-    cache: true,
+    cache: false,
     url: '/newvote',
     views: {
       'tab-newvote': {

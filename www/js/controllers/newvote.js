@@ -25,39 +25,45 @@ app.controller('NewvoteCtrl', function($scope,
         "fullDate": "",
         "timeLeft": "",
         "votePeople": 15,
-        "values": {
-            
-        },
+        "optNum": "",
         "options": {
-            "A": "",
-            "B": ""
+            "A": {
+                "name": "",
+                "values": 0,
+                "imagesUrl": ""
+            },
         },
-        "imagesUrl": {
-            "A": "",
-            "B": ""
-        }
     };
+    
+    $scope.optKey = {};
+    $scope.foo = {};
 
     $scope.myFunc = function () {
+        //------------------------------日期,剩余时间判定----------------------------------------
         var nowTime = new Date();
         $scope.newVoteContents.date = $filter('date')(nowTime, 'yyyy.MM.dd');
         $scope.newVoteContents.fullDate = $filter('date')(nowTime, 'yyyy.MM.dd HH:mm:ss');
-
         $scope.dateTimeLeft = $filter('date')($scope.datetimeValue, 'yyyy.MM.dd HH:mm:ss');
         // $scope.dateTimeLeft = $filter('date')($scope.datetimeValue, 'yyyy.MM.dd HH:mm:ss');
         $scope.newVoteContents.timeLeft = $scope.dateTimeLeft;
         // var left = nowTime-$scope.datetimeValue;
         // console.log($filter('date')(left, 'yyyy.MM.dd HH:mm:ss'));
-        $scope.votePush = angular.copy($scope.newVoteContents);
         
+        $scope.newVoteContents.options = angular.copy($scope.optKey);
+        $scope.newVoteContents.optNum = Object.keys($scope.foo).length
+        $scope.votePush = angular.copy($scope.newVoteContents);
+
+        //------------------------------今日投票admin----------------------------------------
         if($rootScope.username == "admin"){
             $rootScope.todayId = newTodayRef.key();
             newTodayRef.set($scope.votePush);
-            console.log(typeof $rootScope.todayId);
         }else {
             newQueRef.set($scope.votePush);
         }
+
+        // $state.go($state.current, {}, {reload: true});
         $state.go("tab.mypage", {}, {reload: true});
+
     };
     
     $scope.imgIconChange = function (id) {

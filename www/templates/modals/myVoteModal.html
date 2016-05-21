@@ -1,18 +1,18 @@
 <ion-modal-view class="ion-nifty-modal">
     <ion-header-bar class="bar bar-header bar-assertive">
-        <p class="title" >热门投票</p>
-        <a class="button button-icon ion-ios-close-empty" ng-click="hotVoteModal.hide()"></a>
+        <p class="title" >我的投票</p>
+        <a class="button button-icon ion-ios-close-empty" ng-click="myVoteModal.hide()"></a>
     </ion-header-bar>
     <ion-content id="oldModal" class="item item-body">
 
-        <h2>{{ hotVote.content }}</h2>
-        <p>{{ hotVote.date }}
-            <span>  共有{{ hotVote.votePeople }}人投票</span>
+        <h2>{{ vote.content }}</h2>
+        <p>{{ vote.date }}
+            <span>  共有{{ vote.votePeople }}人投票</span>
         </p>
 
         <div class="ImgOptDiv"
              style="margin-bottom: 20px"
-             ng-repeat="(key, option) in hotVote.options">
+             ng-repeat="(key, option) in vote.options">
             <p>{{key}}.{{option.name}}</p>
             <div round-progress
                  max="100"
@@ -30,7 +30,7 @@
                  animation-delay="0">
             </div>
             <div  class="item circle-square" style="margin:-124px 0 0 6px;">
-                <p class="percent">{{(option.value / hotVote.votePeople) | percentage:0}}</p>
+                <p class="percent">{{(option.value / vote.votePeople) | percentage:0}}</p>
                 <img  ng-if="option.imagesUrl"
                       ng-src="{{'data:image/png;base64,'+ option.imagesUrl.base64}}">
             </div>

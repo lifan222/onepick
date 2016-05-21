@@ -21,12 +21,13 @@
             <input type="text"
                    placeholder="A"
                    name="A"
-                   ng-model="newVoteContents.options.A"
+                   ng-model="optKey.A.name"
+                   ng-init="optKey.A.value = 0"
                    ng-required="true">
           </div>
           <div class="uploads IconUnclicked" id="A">
             <input type='file' ng-change="imgIconChange('A')"
-                   ng-model='newVoteContents.imagesUrl.A' maxsize="5000" base-sixty-four-input>
+                   ng-model='optKey.A.imagesUrl' maxsize="5000" base-sixty-four-input>
           </div>
           <!--<span ng-show="newVoteForm.files.$error.maxsize">Files must not exceed 5000 KB</span>-->
         </div >
@@ -38,12 +39,13 @@
             <input type="text"
                    placeholder="B"
                    name="B"
-                   ng-model="newVoteContents.options.B"
+                   ng-model="optKey.B.name"
+                   ng-init="optKey.B.value = 0"
                    ng-required="true" >
           </div>
           <div class="uploads IconUnclicked" id="B">
             <input type='file' ng-change="imgIconChange('B')"
-                   ng-model='newVoteContents.imagesUrl.B' maxsize="5000" base-sixty-four-input>
+                   ng-model='optKey.B.imagesUrl' maxsize="5000" base-sixty-four-input>
           </div>
         </div>
 <!------------------------------------------------------------------------------------>
