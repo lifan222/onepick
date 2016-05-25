@@ -1,5 +1,5 @@
 <ion-view hide-nav-bar="true">
-  <ion-content class="mypage-view" style="margin-top: 0">
+  <ion-content class="mypage-view " style="margin-top: 0">
 <!--menu-->
     <div class="mypage-head">
       <div class="avatar" >
@@ -16,7 +16,7 @@
     </div>
 
 <!--我的投票-->
-    <div class="mypage-content">
+    <div class="mypage-content animated fadeInUp">
       <div ng-show="!myVar">
         <div  class="timeline">
           <div ng-repeat="vote in votes" ng-click="myVoteModal.show(); voteIdPass(vote.$id)">
@@ -36,10 +36,10 @@
 <!--我的问题-->
       <div ng-show="myVar">
 
-        <div class="actQueTitle devider">
+        <div class="actQueTitle devider animated fadeInUp" >
           <h2>正在进行的问题</h2>
         </div>
-        <div class="actQ">
+        <div class="actQ animated fadeInUp" style="animation-delay: .3s">
           <div class="list card">
             <div class="item item-body">
               <ion-slide-box active-slide="myActiveSlide" ng-show="true" does-continue="true">
@@ -81,10 +81,10 @@
           </div>
         </div>
 
-        <div class="oldQueTitle devider">
+        <div class="oldQueTitle devider " style="animation-delay: .6s">
           <h2>历史问题</h2>
         </div>
-        <div  class="timeline">
+        <div  class="timeline animated fadeInUp" style="animation-delay: .9s">
           <div ng-repeat="oldQuestion in oldQuestions" ng-click="oldModal.show(); oldIdPass(oldQuestion.$id)">
             <div class="timeline-thumb bg-color-red timeline-icon"></div>
             <div class="card">
